@@ -1,0 +1,187 @@
+﻿@page
+@model RazorPortfolio.Pages.Projects.dncommunicatorModel
+@{
+    ViewData["Title"] = "EasyCommunicator";
+}
+
+<link rel="stylesheet" href="~/css/prism-vsc-dark-plus.css" />
+<link rel="stylesheet" href="~/css/projects.css" />
+
+
+<div class="productContent">
+
+    <div class="block-description">
+
+        <h1> EasyCommunicator</h1>
+        EasyCommunicator on <a href="https://github.com/zbigniewProjects/EasyCommunicator.git" target="_blank">GitHub</a><br>
+        EasyCommunicator is a thread safe plugin that leverages tcp protocol to enable communication between server and clients in an HTTP like way, (there are enpoints and requests) but in both ways (instead of only client->server). 
+        <br>
+
+<div class="nice-underline">
+        We can create a server instance, register an endpoint on it, and serve it for connected clients that will make requests on it.
+         <pre>
+<code class="language-csharp">_easyServer = new EasyServerAPI();
+//Register an endpoint at which client will issue requests.
+_easyServer.RegisterEndpoint("GenerateRandomNumber", (short clientID, string requestBody, Response response) => {
+    //process client request...
+
+    //respond to client
+    response.Respond(0, "Processed data");
+});
+//start server on port 7777 and allow 100 max concurrent connected clients
+_easyServer.StartServer(7777, 100);</code>
+</pre>
+</div>
+<div class="nice-underline">
+        Now after running server we can create client instance in our project, connect to the that server, and send previously registered request.
+  <pre>
+<code class="language-csharp">EasyClientAPI easyClient = new EasyClientAPI(); //create client instance
+await easyClient.Connect("localhost", 7777); //connect to the server
+//make request to server and store result
+Request req = await easyClient.SendRequest("GenerateRandomNumber");
+//process received data from server
+Console.WriteLine($"Received data from server: {req.ResponseBody}");</code></pre>
+</div>
+
+<div class="nice-underline">
+
+        The same can be done the other way around. The client can also have registered endpoints to which the server can issue requests.
+
+<pre>
+<code class="language-csharp">EasyClientAPI easyClient = new EasyClientAPI();
+easyClient.RegisterEndpoint("GenerateRandomNumberForServer", (string argsm, Response res) =>
+{
+    //generate and return random number
+});</code></pre>
+</div>
+<br>
+        <h2>Why EasyCommunicator was made?</h2>
+        While developing backend systems for my multiplayer game, I realized I needed a way for my backend systems and game server build,
+        which run as separate applications, to communicate with each other. Backend systems act mainly as a bridge between players and games servers.
+        It's mandatory for backend to know exactly how many players are connected to each running game session,
+        so that if a new player wants to connect to the game it can select sessions that are not full and connect that player to it. 
+        Therefore, I needed to the ability to send requests from the server to clients of that server.
+        <br>
+        <br>
+        And that's why I developed EasyCommunicator. Thanks to this we can have one app that implements server dll of EasyCommunicator, 
+        and a second one which will implement the client dll, and we can connect them with each other and use their APIs to send and 
+        receive requests on previously registered endpoints.
+        <br>
+        <br>
+
+        <h2>EasyCommunicator Setup Example</h2>
+        In this example we will set up endpoint called "GenerateRandomNumber" on the server and call it from client. We can also register 
+        endpoint on client and make request to it from the server in the same way. 
+        For both server and client apps, we will use the console application project type. 
+        Those examples are included in the <a target="_blank" href="https://github.com/zbigniewProjects/EasyCommunicator.git">github repo</a> of EasyCommunicator.
+        <br><br>
+        First, let's prepare server using the EasyServer project/dll of EasyCommunicator solution. 
+        <br>
+        <pre>
+<code class="language-csharp">using EasyComServer; 
+public class Program
+{
+    static EasyServerAPI _easyServer;
+    public static void Main(string[] args)
+    {
+        //First create EasyCommunicator server instance
+        _easyServer = new EasyServerAPI();
+       
+        //we can register callbacks for common events such as clients connecting and disconnecting
+        _easyServer.Callback_OnClientConnected += (IClient client) => Console.WriteLine($"Client #{client.ID()} connected.");
+        _easyServer.Callback_OnClientDisconnected += (short clientID) => Console.WriteLine($"Client #{clientID} disconnected.");
+
+        //register endpoint on which client will issue requests
+        _easyServer.RegisterEndpoint("GenerateRandomNumber", (short clientID, string requestBody, Response response) => {
+            Console.WriteLine($"Client number {clientID} requested random number!");
+
+            //generate random number
+            Random random = new Random();
+            int randomNumber = random.Next(0, 1000);
+
+            //respond to client with random number as requested. first value is response code (0), and second is body (random number)
+            response.Respond(0, randomNumber.ToString());
+            Console.WriteLine($"Random number {randomNumber} sent to client #{clientID}.");
+        });
+
+        //after registering endpoints we can start the server
+        ushort port = 7777;
+        ushort maxConcurrentClients = 100;
+        Console.WriteLine($"Started server on port {port}");
+        _easyServer.StartServer(port, maxConcurrentClients);
+
+        //prevent app from immediate closure
+        Console.ReadKey();
+    }
+}</code>
+        </pre>
+        <br>
+Now that server is prepared we can program client that will send "GenerateRandomNumber" request to our server. 
+
+        <pre>
+<code class="language-csharp">using EasyComClient;
+public class Program
+{
+    public async static Task Main(string[] args)
+    {
+        EasyClientAPI easyClient = new EasyClientAPI();
+        easyClient.Init();
+        easyClient.SetLogLevel(LogSystem.LogLevel.Information);
+
+        //register callbacks for common events
+        easyClient.Callback_OnConnected += () => Console.WriteLine("Connected to the server");
+        easyClient.Callback_OnDisconnected += () => Console.WriteLine("Disconnected from the server");
+        easyClient.Callback_CouldNotConnect += () => Console.WriteLine("Could not connect the server");
+
+        //try connecting to server untill success
+        while (easyClient.Status == ClientStatus.NotConnected)
+        {
+            await easyClient.Connect("localhost", 7777);
+        }
+
+        //connection successfull, now we can make requests to server
+        while (true)
+        {
+            Console.WriteLine("Press key to request number number random from server");
+            Console.ReadKey();
+
+            //send request to easy communicator server component utylized by some parent app
+            Request req = await easyClient.SendRequest("GenerateRandomNumber");
+
+            //code 255 stands for request timeout, handle it here
+            if (req.Code == 255) 
+            {
+                Console.WriteLine("Server did not respond on time");
+                continue;
+            }
+
+            //display number received from server
+            Console.WriteLine($"Received random number: {req.ResponseBody}");
+            Console.WriteLine();
+        }
+    }
+}</code>
+        </pre>
+<br>
+Now we can run both console apps and see results. In client console after automatic connection and key press we're receiving random number from server.
+<img src="~/img/easycom_console_clientExample.jpg">
+(Random number being 404 is pure coincidence)
+
+<br>
+<br>
+NOTE: Client component of EasyCommunicator targets Net Framework 4.8.1 instead of .NET8.0 in order to be compatible with Unity3D game servers.
+<br>
+        <br>Technologies/Frameworks used:
+        <div class="list-container">
+            <ul>
+            <li>C#</li>
+            <li>.NET 8.0</li>
+            <li>.NET Framework 4.8.1</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js"></script>

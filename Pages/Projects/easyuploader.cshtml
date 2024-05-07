@@ -1,0 +1,61 @@
+﻿@page
+@model RazorPortfolio.Pages.Projects.dnuploaderModel
+@{
+}
+<link rel="stylesheet" href="~/css/projects.css" />
+
+<div class="productContent">
+
+    <div class="block-description">
+        <h1>Easy uploader</h1>
+        Easy uploader on <a target="_blank" href="https://github.com/zbigniewProjects/EasyUploader">Github</a> <br>
+        EasyUploader is an application that automates the process of deploying the server build of a Unity3D game to a dedicated server.
+        It allows users to build the game and upload it to the server in one click, and then run it. The project consists of three parts:
+
+        <div class="nice-underline">
+            MVC server - app that receives server build from client and manages it accordingly to client request
+            <br>
+            Client API DLL - a DLL that includes all functions necessary to communicate with the server.
+            These functions include uploading the game build to the server and controlling the execution of the game build (e.g., starting and stopping it).
+            <br>
+            Editor window - Script writted using Unity's libraries that draws window and calls requests from Client api dll.
+        </div>
+
+        <div class="nice-underline-center">
+            <img src="~/img/showcase_easyUploader.png">
+        </div>
+
+
+        </br>
+        Process goes like this:
+        <br>
+        <div class="nice-underline">
+            Build game => Compress build => Send compressed build to server => Decompress on server => Give game build execution rights in case of running on linux<br>
+        </div>
+        After that, we can run and terminate the game on demand. Additionally, upon running the game on the server, 
+        we will receive real-time process output from the server (achieved using Server-Sent Events).
+        <div class="nice-underline-center">
+            <img src="~/img/showcase_easyUploaderTargetOutput.png">
+        </div>
+
+        
+
+
+        <h2>Why was EasyUploader made?</h2>
+        While developing my multiplayer game, I found myself repeating the process described above far too often. Now,
+        I don't even need to SSH to my machine when I want to test my game.
+
+        <br>
+
+        <br>Technologies/Frameworks used:
+        <div class="list-container">
+            <ul>
+                <li>C#</li>
+                <li>.NET 8.0</li>
+                <li>.NET Framework 4.8.1</li>
+                <li>AspNetCore.Mvc</li>
+            </ul>
+        </div>
+
+    </div>
+</div>

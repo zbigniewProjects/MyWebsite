@@ -1,0 +1,24 @@
+﻿@page
+@model RazorPortfolio.Pages.ProjectsModel
+@{
+}
+
+<div class="container">
+    @for (int i = 0; i < Model.Projects.Count; i++)
+    {
+        var product = Model.Projects[i];
+        <a href=@Model.Projects[i].PageUrl>
+            <div class="projectItem">
+                <div class="project-title">
+                    <h1 class="product-name">@product.Name</h1>
+                </div>
+                
+                <img src="@product.ImageUrl" alt="@product.Name" class="projectImage" />
+
+                <p class="project-description">
+                    @product.Description
+                </p>
+            </div>
+        </a>
+    }
+</div>

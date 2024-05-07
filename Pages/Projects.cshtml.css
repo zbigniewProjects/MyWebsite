@@ -1,0 +1,73 @@
+﻿.container {
+    height: auto;
+    width: 1200px;
+}
+
+.spacing-div 
+{
+    height: 30px;
+}
+.project-title {
+    width: 50%;
+    display: inline-block;
+    background-color: rgb(65, 65, 65);
+}
+
+h1 {
+    padding-left: 14px;
+    padding-top: 10px;
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+}
+
+
+.projectItem {
+    
+    border-width: 4px;
+    border: solid;
+    border-color: rgb(65, 65, 65);
+
+    margin-bottom: 20px;
+    width: auto;
+    height: auto;
+    background-color: rgb(29, 29, 29);
+    color: rgb(255, 255, 255);
+    float: left;
+    clear: both;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.projectItem:hover {
+    border-color: rgb(238, 255, 0);
+}
+
+.project-details {
+    width: 100%;
+    display: flex;
+    float: left;
+    justify-content: flex-end; /* Align items to the right side */
+    font-size: 20px;
+}
+.project-description {
+    width: 50%;
+    padding: 5px;
+    padding-left: 14px;
+    padding-bottom: 14px;
+    font-size: 20px;
+    margin: 0px;
+    
+}
+
+.projectImage {
+    height: auto;
+    width: 50%;
+    
+    float: right;
+    border: solid;
+    border-color: rgb(65, 65, 65);
+    
+    border-width: 4px;
+    border-top-width: 0px;
+    border-right-width: 0px; 
+}
+

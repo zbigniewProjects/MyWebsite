@@ -1,0 +1,102 @@
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+
+body {
+  color: white;
+  font-family: Roboto;
+  background-color: rgb(41, 41, 41);
+}
+
+.navbar {
+    background-color: rgb(65, 65, 65) !important;
+    border-bottom: 0px !important;
+}
+
+.customHeader {
+    width: 100%;
+    position: fixed !important;
+    clear: both;
+    z-index: 10 !important;
+}
+
+.main-body-container 
+{
+    min-height: 500px;
+}
+
+.footer
+{
+    width: auto; 
+    
+    background-color: rgb(65, 65, 65);
+    color: rgb(255, 255, 255);
+
+    padding-left: 18vw;
+    padding-right: 18vw;
+
+    bottom: 0;
+
+    position: relative;
+    bottom: 0;
+    clear: both;
+
+}
+.language-csharp {
+    background-color: rgb(22, 22, 22) !important;
+    outline-color:aqua !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  src: url('/fonts/Roboto-Regular.ttf'), format("ttf");
+}
+code
+{
+   
+   
+   
+   padding: 0px !important;
+   margin: 0px !important;
+}
+pre 
+{
+  line-height: normal !important;
+  padding: 0px !important;
+}
+
+a {
+    color: rgb(255, 230, 0);
+    text-decoration: none;
+    font-family: Roboto;
+}
+
+a:focus {
+    opacity: 0.2;
+}
+
+a:hover {
+  color: rgb(255, 166, 0);
+    opacity: 0.8;
+}
+
+.index-fontSize
+{
+  font-size: 20px;  
+}
