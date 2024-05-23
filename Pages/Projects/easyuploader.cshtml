@@ -1,6 +1,8 @@
 ﻿@page
+@using RazorPortfolio.Utils
 @model RazorPortfolio.Pages.Projects.dnuploaderModel
 @{
+    ViewData["Title"] = "Easy Uploader";
 }
 <link rel="stylesheet" href="~/css/projects.css" />
 
@@ -8,6 +10,9 @@
 
     <div class="block-description">
         <h1>Easy uploader</h1>
+
+        @Html.Raw(Render.RenderTechnologies(Model.Project))
+
         Easy uploader on <a target="_blank" href="https://github.com/zbigniewProjects/EasyUploader">Github</a> <br>
         EasyUploader is an application that automates the process of deploying the server build of a Unity3D game to a dedicated server.
         It allows users to build the game and upload it to the server in one click, and then run it. The project consists of three parts:

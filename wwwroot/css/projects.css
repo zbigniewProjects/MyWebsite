@@ -3,10 +3,14 @@
     background-color: rgb(29, 29, 29);
     color: rgb(255, 255, 255);
     padding: 20px;
-
 }
 
-.productContent {    
+.product-name {
+    padding:5px;
+    font-size:36px
+}
+
+.productContent {
     width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -14,7 +18,9 @@
     margin-bottom: 60px;
     background-color: #131313;
     color: rgb(211, 211, 211);
+    
 }
+
 
 @media screen and (max-width: 1100px) {
     .productContent {
@@ -30,22 +36,12 @@
 .image {
     width: 100%;
     height: auto;
-
-    /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4); */
-
-    /* border: solid; */
-    /* border-color: rgb(102, 102, 102); */
-
     border-width: 0px;
-    /* border-top: 0px; */
-    /* border-bottom: 2px; */
 }
 
 .nice-underline
 {
-    /* height: 4px; */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
-
     border: solid;
     border-color: rgb(102, 102, 102);
     border-width: 3px;
@@ -57,15 +53,11 @@
     padding: 5px;
     padding-left: 8px;
     padding-right: 8px;
-    /* width: 100%; */
-    /* opacity: 0.6; */
-    /* background-color: white; */
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .nice-underline-center {
-    /* height: 4px; */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     border: solid;
     border-color: rgb(102, 102, 102);
@@ -83,7 +75,64 @@
     margin-bottom: 10px;
 }
 
+
 li
 {
     padding-left: 0px;
+}
+
+.technology-container {
+    max-width: 350px;
+    background-color: black;
+    border-radius: 5px;
+    padding: 3px;
+    display: inline-block;
+}
+.technology {
+    color: black;
+    font-family: "Roboto_Bold";
+    margin: 2px;
+    font-size: 19px;
+    padding: 6px;
+    display: inline-block;
+    border-radius: 5px;
+}
+.tech-net {
+    background-color: rgb(204, 0, 255);
+}
+.tech-html {
+    background-color: orange;
+}
+.tech-css
+{
+    background-color: aqua;
+}
+.tech-MVC
+{
+    background-color: rgb(162, 0, 255);
+}
+.tech-ef {
+    background-color: rgb(0, 255, 255);
+}
+.tech-mediatr{
+    background-color: greenyellow;
+}
+.tech-postgres
+{
+    background-color: rgb(0, 110, 255);
+}
+.tech-mssql
+{
+    background-color: rgb(112, 112, 112);
+}
+.tech-js
+{
+    background-color: rgb(255, 238, 0);
+}
+.tech-tcpip
+{
+    background-color: red;
+}
+.tech-unity {
+    background-color: white;
 }

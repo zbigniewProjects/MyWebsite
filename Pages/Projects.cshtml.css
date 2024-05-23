@@ -3,16 +3,6 @@
     width: 1200px;
 }
 
-.spacing-div 
-{
-    height: 30px;
-}
-.project-title {
-    width: 50%;
-    display: inline-block;
-    background-color: rgb(65, 65, 65);
-}
-
 h1 {
     padding-left: 14px;
     padding-top: 10px;
@@ -20,36 +10,84 @@ h1 {
     font-family: Roboto;
 }
 
+.spacing-div 
+{
+    height: 30px;
+}
+.project-title {
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(65, 65, 65);
+    border-top-right-radius: 26px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
 
 .projectItem {
     
-    border-width: 4px;
-    border: solid;
-    border-color: rgb(65, 65, 65);
+    
+    border: solid 6px;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-color:  rgb(65, 65, 65);;
 
-    margin-bottom: 20px;
-    width: auto;
+    width: 100%;
     height: auto;
+    min-height: 380px;
     background-color: rgb(29, 29, 29);
     color: rgb(255, 255, 255);
     float: left;
     clear: both;
     box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
-}
 
-.projectItem:hover {
-    border-color: rgb(238, 255, 0);
+    margin-bottom: 0px;
+}
+.header-technologies
+{
+    width: 30%;    
+}
+.projectItemAura
+{
+    width: 40%;
+    display: inline-block;
+}
+.button-learnMore 
+{
+    all: unset;
+    text-align: center;
+    
+    
+    font-size: 24px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-bottom-left-radius: 48px;
+    border-bottom-right-radius: 48px;
+
+    clear: both;
+    width:100%;
+    padding-top: 10px;
+    float: left;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    cursor: default;
+
+    margin-bottom: 60px;
+}
+.button-learnMore:hover
+{
+    background-color: aqua;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
 }
 
 .project-details {
     width: 100%;
-    display: flex;
-    float: left;
-    justify-content: flex-end; /* Align items to the right side */
     font-size: 20px;
 }
 .project-description {
-    width: 50%;
     padding: 5px;
     padding-left: 14px;
     padding-bottom: 14px;
@@ -59,8 +97,9 @@ h1 {
 }
 
 .projectImage {
-    height: auto;
     width: 50%;
+    height: auto;
+    /* max-height: 900px; */
     
     float: right;
     border: solid;

@@ -63,17 +63,21 @@ body {
 }
 
 @font-face {
-  font-family: Roboto;
-  font-style: normal;
-  src: url('/fonts/Roboto-Regular.ttf'), format("ttf");
+    font-family: "Roboto";
+    font-style: normal;
+    src: url('/fonts/Roboto-Regular.ttf')
 }
-code
-{
-   
-   
-   
-   padding: 0px !important;
-   margin: 0px !important;
+@font-face {
+    font-family: "Roboto_Bold";
+    font-style: normal;
+    src: url('/fonts/Roboto-Bold.ttf')
+}
+
+
+
+code {
+    padding: 0px !important;
+    margin: 0px !important;
 }
 pre 
 {
@@ -92,7 +96,7 @@ a:focus {
 }
 
 a:hover {
-  color: rgb(255, 166, 0);
+    color: rgb(255, 166, 0);
     opacity: 0.8;
 }
 

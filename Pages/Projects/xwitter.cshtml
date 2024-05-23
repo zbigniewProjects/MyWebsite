@@ -1,0 +1,31 @@
+﻿@page
+@using RazorPortfolio.Utils
+@model RazorPortfolio.Pages.Projects.twitterModel
+@{
+    ViewData["Title"] = "Xwitter";
+}
+<link rel="stylesheet" href="~/css/projects.css" />
+
+<div class="productContent">
+    <div class="block-description">
+        @Html.Raw(Render.RenderTechnologies(Model.Project))
+        <br>
+        Xwitter on <a target="_blank" href="https://github.com/zbigniewProjects/xwitter">Github</a> <br>
+        Check out this project <a href="https://xwitter.zbigniew.dev">here</a><br>
+        <br>
+        Xwitter is a very simple twitter like app <br>
+        Users can create an account and post their stuff, and others can comment it. <br>
+        <br>
+        Project follows clean architecture & CQRS & Repository design<br>
+        <br>
+        Each post and user profiles have their own url <br>
+        <br>
+        
+        Todo:
+        <ul>
+            <li>Add replies to comments feature</li>
+            <li>Add like feature for posts</li>
+            <li>Replace more complicated linq queries used in entity framework with stored procedures</li>
+        </ul>
+    </div>
+</div>
