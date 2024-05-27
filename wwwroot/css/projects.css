@@ -81,6 +81,22 @@ li
     padding-left: 0px;
 }
 
+.image-width100
+{
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 4px solid black;
+}
+.singleFeature-header
+{   
+    all: unset;
+    display: block;
+    font-size: 24px;
+    padding: 10px;
+}
+
 .technology-container {
     max-width: 350px;
     background-color: black;

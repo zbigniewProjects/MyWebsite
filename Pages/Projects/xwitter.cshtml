@@ -8,23 +8,45 @@
 
 <div class="productContent">
     <div class="block-description">
-        @Html.Raw(Render.RenderTechnologies(Model.Project))
+        @Html.Raw(Render.RenderTechnologies(Model.Project.TechStack))
         <br>
+        <div class="singleFeature-header">
         Xwitter on <a target="_blank" href="https://github.com/zbigniewProjects/xwitter">Github</a> <br>
         Check out this project <a href="https://xwitter.zbigniew.dev">here</a><br>
-        <br>
-        Xwitter is a very simple twitter like app <br>
-        Users can create an account and post their stuff, and others can comment it. <br>
-        <br>
-        Project follows clean architecture & CQRS & Repository design<br>
-        <br>
-        Each post and user profiles have their own url <br>
+        </div>
         <br>
         
-        Todo:
+            <div class="singleFeature-header">Xwitter is a simple twitter like web app </div>
+            <img class="image-width100" src="~/img/xwitter_showcase_feedNotLoggedIn.jpg"><br>
+
+
+        <div class="singleFeature-header">
+            Users can create an account and post their stuff, and others can comment it. 
+            </div>
+            <img class="image-width100" src="~/img/xwitter_showcase_PostPage.jpg"><br>
+        
+
+        <div class="singleFeature-header">
+            Each post and user profiles have their own url 
+            </div>
+            <img class="image-width100" src="~/img/xwitter_showcase_AccountPage.jpg"><br>
+        
+        
+        Project follows clean architecture & CQRS & Repository pattern<br>
+        <br>
+        FunFact: <br>
+        This project was origally going to use two databases, MSSQl and PostGreSQL. MSSQL was used for storing user accounts,
+        and PostGreSQL for storing posts and comments, since PostGre supports arrays in columns by default. I found
+        it very helpful for cases like having post reference by array of id's every comment that is posted under it in another table. 
+        However, when deploying it on my Linux virtual machine, I realized MSSQL requires at least 2GB of RAM to run, but I only had 1GB.   <br>
+        Not wanting to pay more monthly for a bigger VM, I removed MSSQL from the project, and now PostgreSQL handles everything.
+        <br>
+        <br>
+        Todo list:
         <ul>
-            <li>Add replies to comments feature</li>
+            <li>Add follow other people feature</li>
             <li>Add like feature for posts</li>
+            <li>Add replies to comments feature</li>
             <li>Replace more complicated linq queries used in entity framework with stored procedures</li>
         </ul>
     </div>

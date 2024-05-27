@@ -6,19 +6,21 @@ namespace RazorPortfolio.Utils
 {
     public static class Render
     {
-        public static string RenderTechnologies(Project project)
+        public static string RenderTechnologies(Technologies[] techStack, bool renderDefaultHeader = true)
         {
-            if (project.TechStack == null || project.TechStack != null && project.TechStack.Length < 0)
+            if (techStack == null || techStack != null && techStack.Length < 0)
                 return string.Empty;
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.Append("<h3 class=\"header-technologies\">Technologies&Frameworks used:</h3>");
+            if(renderDefaultHeader)
+                stringBuilder.Append("<h3 class=\"header-technologies\">Technologies&Frameworks used:</h3>");
+
             stringBuilder.Append("<div class=\"technology-container\">");
 
-            for (int t = 0; t < project.TechStack!.Length; t++)
+            for (int t = 0; t < techStack!.Length; t++)
             {
-                stringBuilder.Append(Database.TechnologiesDictionary[project.TechStack[t]]);
+                stringBuilder.Append(Database.TechnologiesDictionary[techStack[t]]);
             }
 
             stringBuilder.Append("</div></br>");

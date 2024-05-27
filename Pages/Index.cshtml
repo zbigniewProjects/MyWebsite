@@ -1,8 +1,10 @@
 ﻿@page
+@using RazorPortfolio.Utils
 @model IndexModel
 @{
     ViewData["Title"] = "zbigniew.dev";
 }
+<link rel="stylesheet" href="~/css/projects.css" />
 
 <div class="text-center">
     <h1 class="display-4">C#/.Net Backend Developer</h1>   
@@ -13,6 +15,26 @@
         <a href="/projects"> Portfolio</a><br>
         <a href="/contact"> Contact</a><br><br>
     </div>
+
+    <h2>Skills</h2>
+    @{
+        Technologies[] tech = {
+            Technologies.csharp,
+            Technologies.dotNet,
+            Technologies.aspNet,
+            Technologies.mvc,
+            Technologies.entityFramework,
+            Technologies.postgresql,
+            Technologies.tcpip,
+            Technologies.html,
+            Technologies.css,
+            Technologies.javascript,
+        };
+    }
+
+    @Html.Raw(Render.RenderTechnologies(tech, false))
+    <br>
+
     <h3>This website's TechStack: </h3>
     Ubuntu22<br>
     .NET Razor Pages Server<br>
