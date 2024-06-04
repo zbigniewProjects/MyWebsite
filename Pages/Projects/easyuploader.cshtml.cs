@@ -6,7 +6,7 @@ namespace RazorPortfolio.Pages.Projects
     public class dnuploaderModel : PageModel
     {
         [BindProperty]
-        public Project Project { get; set; } = Database.Projects[2];
+        public Database.Project Project { get; set; } = Database.Projects[2];
         public void OnGet()
         {
         }

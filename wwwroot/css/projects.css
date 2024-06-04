@@ -97,6 +97,23 @@ li
     padding: 10px;
 }
 
+.projectTypeHeader {
+    color: white;
+    background-color:black;
+    margin: 2px;
+    font-size: 22px;
+    padding: 6px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.projectTypes-container {
+    width: 100%;
+    border-radius: 5px;
+    padding: 3px;
+    display: inline-block;
+}
+
 .technology-container {
     max-width: 350px;
     background-color: black;

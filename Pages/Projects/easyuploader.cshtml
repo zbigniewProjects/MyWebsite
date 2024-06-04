@@ -11,8 +11,16 @@
     <div class="block-description">
         <h1>Easy uploader</h1>
 
-        @Html.Raw(Render.RenderTechnologies(Model.Project.TechStack))
+        <div class="project-description">
+            <h3>Project type:</h3>
+            <div class="projectTypes-container">
+                @Html.Raw(Render.RenderProjectsTypesStack(Model.Project.ProjectType))
+            </div>
+        </div>
+        <br>
 
+        @Html.Raw(Render.RenderTechnologies(Model.Project.TechStack))
+        <br>
         Easy uploader on <a target="_blank" href="https://github.com/zbigniewProjects/EasyUploader">Github</a> <br>
         EasyUploader is an application that automates the process of deploying the server build of a Unity3D game to a dedicated server.
         It allows users to build the game and upload it to the server in one click, and then run it. The project consists of three parts:

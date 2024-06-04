@@ -13,8 +13,19 @@
 
     <div class="block-description">
 
-        @Html.Raw(Render.RenderTechnologies(Model.Project.TechStack))
+        <h1>Easy Communicator</h1>
 
+        <div class="project-description">
+            <h3>Project type:</h3>
+            <div class="projectTypes-container">
+                @Html.Raw(Render.RenderProjectsTypesStack(Model.Project.ProjectType))
+            </div>
+        </div>
+        <br>
+
+
+        @Html.Raw(Render.RenderTechnologies(Model.Project.TechStack))
+        <br>
         <h1> EasyCommunicator</h1>
         EasyCommunicator on <a href="https://github.com/zbigniewProjects/EasyCommunicator.git" target="_blank">GitHub</a><br>
         EasyCommunicator is a thread safe plugin that leverages tcp protocol to enable communication between server and clients in an HTTP like way, (there are enpoints and requests) but in both ways (instead of only client->server). 

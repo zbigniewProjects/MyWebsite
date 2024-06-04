@@ -26,5 +26,25 @@ namespace RazorPortfolio.Utils
             stringBuilder.Append("</div></br>");
             return stringBuilder.ToString();
         }
+
+        public static string RenderProjectsTypesStack(ProjectType[] projectTypes) 
+        {
+            if (projectTypes.Length == 1) 
+            {
+                return $"<div class=\"projectTypeHeader\">{Database.ProjectTypes[projectTypes[0]]}</div>";
+            }
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < projectTypes.Length; i++)
+            {
+                stringBuilder.Append($"<div class=\"projectTypeHeader\">{Database.ProjectTypes[projectTypes[i]]}</div>");
+
+                if ((i+1) < projectTypes.Length)
+                    stringBuilder.Append(" + ");
+            }
+
+            return stringBuilder.ToString();
+        }
     }
 }

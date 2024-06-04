@@ -8,6 +8,17 @@
 
 <div class="productContent">
     <div class="block-description">
+        <h1>Xwitter</h1>
+
+        <div class="project-description">
+            <h3>Project type:</h3>
+            <div class="projectTypes-container">
+                @Html.Raw(Render.RenderProjectsTypesStack(Model.Project.ProjectType))
+            </div
+        </div>
+        <br>
+        <br>
+
         @Html.Raw(Render.RenderTechnologies(Model.Project.TechStack))
         <br>
         <div class="singleFeature-header">

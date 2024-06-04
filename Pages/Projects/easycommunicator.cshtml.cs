@@ -6,7 +6,7 @@ namespace RazorPortfolio.Pages.Projects
     public class dncommunicatorModel : PageModel
     {
         [BindProperty]
-        public Project Project { get; set; } = Database.Projects[1];
+        public Database.Project Project { get; set; } = Database.Projects[1];
         public void OnGet()
         {
         }

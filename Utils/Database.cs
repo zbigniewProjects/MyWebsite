@@ -4,6 +4,17 @@ namespace RazorPortfolio
 {
     public static class Database
     {
+        public struct Project
+        {
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public string ImageUrl { get; set; }
+            public string PageUrl { get; set; }
+
+            public ProjectType[] ProjectType { get; set; }
+            public Technologies[] TechStack { get; set; }
+        }
+
         public static Dictionary<Technologies, string> TechnologiesDictionary = new Dictionary<Technologies, string>() {
             { Technologies.dotNet, "<div class=\"technology tech-net\">.NET</div>" },
             { Technologies.csharp, "<div class=\"technology tech-net\">C#</div>"},
@@ -22,9 +33,21 @@ namespace RazorPortfolio
             { Technologies.unity3d, "<div class=\"technology tech-unity\">Unity3D</div>"},
         };
 
+        public static Dictionary<ProjectType, string> ProjectTypes = new Dictionary<ProjectType, string>()
+        {
+            {ProjectType.WebAPI, "ASP.NET Core WebAPI" },
+            {ProjectType.MVC, "ASP.NET Core MVC" },
+            {ProjectType.UnityClient, "Unity3D client"},
+            {ProjectType.ConsoleApplication, "Console application"},
+            {ProjectType.ReactFrontend, "React frontend"},
+            {ProjectType.UnityGame, "Unity3D game"},
+            {ProjectType.ClassLibrary, "Class Library"},
+        };
+
         public static List<Project> Projects { get; internal set; } = new List<Project>() {
              new Project{
                  Name = "Xwitter",
+                 ProjectType = [ ProjectType.MVC ],
                  ImageUrl = "img/preview_xwitter.jpg",
                  Description = "In short - Twitter clone web app.<br><br> Users can create account, post posts, and others can comment them. Each post and user have their unique urls" +
                  "<br> You can check out Xwitter <a href=\"https://xwitter.zbigniew.dev\" target=\"_blank\"> here </a>",
@@ -46,6 +69,7 @@ namespace RazorPortfolio
             new Project
             {
                 Name = "EasyCommunicator",
+                ProjectType = [ ProjectType.ClassLibrary ],
                 ImageUrl = "img/preview_easycom.png",
                 Description = "EasyCommunicator is client-server communication app that utilizes tcp protocol to " +
                 "enable http-like communication but in both ways. Server can issue request to client and vice versa.",
@@ -60,6 +84,7 @@ namespace RazorPortfolio
             new Project
             {
                 Name = "EasyUploader",
+                ProjectType = [ ProjectType.WebAPI, ProjectType.UnityClient ],
                 ImageUrl = "img/preview_easyUploader.png",
                 Description = "EasyUploader is application that automates process of deploying server build of Unity3D game to dedicated server. It allows " +
                 "user to build game and upload it to server in one click, and run it with specified launch comands in second.",
@@ -87,6 +112,17 @@ namespace RazorPortfolio
         javascript,
         tcpip,
         ajax,
-        unity3d
+        unity3d,
+        dapper,
+    }
+    public enum ProjectType 
+    {
+        ConsoleApplication,
+        MVC,
+        WebAPI,
+        ClassLibrary,
+        ReactFrontend,
+        UnityClient,
+        UnityGame,
     }
 }

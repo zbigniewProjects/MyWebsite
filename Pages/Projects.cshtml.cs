@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using static RazorPortfolio.Database;
 
 namespace RazorPortfolio.Pages
 {
@@ -9,15 +10,5 @@ namespace RazorPortfolio.Pages
         [BindProperty]
         public List<Project> Projects { get; set; } = Database.Projects;
 
-    }
-
-    public struct Project 
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
-        public string PageUrl { get; set; }
-
-        public Technologies[] TechStack { get; set; }
     }
 }

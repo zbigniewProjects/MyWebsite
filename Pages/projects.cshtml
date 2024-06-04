@@ -21,8 +21,15 @@
             </div>
 
             <div class="projectItem">
-                
                 <div class="projectItemAura">
+
+                    <div class="project-description">
+                        <h3>Project type:</h3>
+                        <div class="projectTypes-container">
+                            @Html.Raw(Render.RenderProjectsTypesStack(product.ProjectType))
+                        </div>
+                    </div>
+
                     @if (product.TechStack != null && product.TechStack.Length > 0)
                     {
                         <div class="project-description">
