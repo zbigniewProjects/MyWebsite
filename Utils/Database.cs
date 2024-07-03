@@ -31,6 +31,9 @@ namespace RazorPortfolio
             { Technologies.tcpip, "<div class=\"technology tech-tcpip\">TCP/IP</div>"},
             { Technologies.ajax, "<div class=\"technology tech-tcpip\">AJAX</div>"},
             { Technologies.unity3d, "<div class=\"technology tech-unity\">Unity3D</div>"},
+            { Technologies.typescript, "<div class=\"technology tech-postgres\">TypeScript</div>"},
+            { Technologies.signalR, "<div class=\"technology tech-tcpip\">SignalR</div>"},
+            { Technologies.reactJS, "<div class=\"technology tech-css\">ReactJS</div>"},
         };
 
         public static Dictionary<ProjectType, string> ProjectTypes = new Dictionary<ProjectType, string>()
@@ -110,10 +113,13 @@ namespace RazorPortfolio
         postgresql,
         mssql,
         javascript,
+        typescript,
         tcpip,
         ajax,
         unity3d,
         dapper,
+        signalR,
+        reactJS,
     }
     public enum ProjectType 
     {
